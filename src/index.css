@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply leading-tight tracking-tight;
+  }
+  section[id] {
+    scroll-margin-top: 68px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[1160px] px-6;
+  }
+  .eyebrow {
+    @apply mb-4 inline-block rounded-full bg-brand-tint px-3 py-1.5 text-[13px] font-bold text-brand;
+  }
+  .h2 {
+    @apply text-[clamp(28px,4vw,40px)] font-extrabold;
+  }
+  .lead {
+    @apply mt-3.5 max-w-[620px] text-lg text-ink-muted;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-[15px] font-bold transition active:scale-[0.97];
+  }
+  .btn-p {
+    @apply bg-brand text-white shadow-glow hover:bg-brand-dark;
+  }
+  .btn-o {
+    @apply border-[1.5px] border-line bg-white text-ink hover:border-brand hover:text-brand;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-[#b9d1ff] hover:shadow-card;
+  }
+  .tag {
+    @apply rounded-full bg-brand-soft px-2.5 py-1 text-xs font-bold text-brand-dark;
+  }
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
